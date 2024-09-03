@@ -17,7 +17,12 @@ contract SupplyChain is Ownable, AccessControl {
         string name;
         string origin;
         address currentOwner;
-        uint256 status; // 0: Created, 1: In Transit, 2: Delivered, 3: Quality Checked, 4: Rejected
+        // 0: Created,
+        // 1: In Transit,
+        // 2: Delivered,
+        // 3: Quality Checked,
+        // 4: Rejected
+        uint256 status;
         uint256 timestamp;
         string location;
         string remarks;
@@ -142,5 +147,44 @@ contract SupplyChain is Ownable, AccessControl {
         }
 
         emit ItemInspected(_itemId, msg.sender, _passed, _remarks);
+    }
+
+    function deliverItem(uint256 _itemId) public onlyRole(DISTRIBUTOR_ROLE) {
+        require(
+            items[_itemId].currentOwner == msg.sender,
+            "Caller is not the owner"
+        );
+
+        items[_itemId].status = 2;
+        items[_itemId].timestamp = block.timestamp;
+        items[_itemId].remarks = "Delivered";
+        auditTrail[_itemId].push("Delivered to final destination.");
+
+        emit OwnershipTransferred(_itemId, msg.sender, address(0), 2);
+    }
+
+    function resolveDispute(
+        uint256 _itemId,
+        string memory _resolution
+    ) public onlyRole(DEFAULT_ADMIN_ROLE) {
+        auditTrail[_itemId].push(
+            string(abi.encodePacked("Dispute resolved: ", _resolution))
+        );
+
+        items[_itemId].remarks = _resolution;
+    }
+
+    function addRole(address _account, bytes32 _role) external onlyOwner {
+        _grantRole(_role, _account);
+    }
+
+    function revokeRole(address _account, bytes32 _role) external onlyOwner {
+        revokeRole(_role, _account);
+    }
+
+    function getAuditTrail(
+        uint256 _itemId
+    ) public view returns (string[] memory) {
+        return auditTrail[_itemId];
     }
 }
