@@ -17,8 +17,8 @@ contract SupplyChain is Ownable, AccessControl {
         string name;
         string origin;
         address currentOwner;
-        uint256 status;
-        uint timestamp;
+        uint256 status; // 0: Created, 1: In Transit, 2: Delivered, 3: Quality Checked, 4: Rejected
+        uint256 timestamp;
         string location;
         string remarks;
     }
@@ -52,19 +52,16 @@ contract SupplyChain is Ownable, AccessControl {
         string reason
     );
 
-    constructor() {
+    constructor() Ownable(msg.sender) {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
-    modifier onlyRole(bytes32 role) {
-        require(hasRole(role, msg.sender), "Caller is not authorized.");
-        _;
-    }
+    // Create item
 
     function createItem(
         string memory _name,
         string memory _origin
-    ) publi onlyRole(PRODUCER_ROLE) {
+    ) public onlyRole(PRODUCER_ROLE) {
         itemCounter++;
 
         items[itemCounter] = Item({
@@ -78,7 +75,28 @@ contract SupplyChain is Ownable, AccessControl {
             remarks: "Item Created."
         });
 
-        auditTrail[itemCounter].push("Created at Origin by producer.")
+        auditTrail[itemCounter].push("Created at Origin by producer.");
         emit ItemCreated(itemCounter, _name, _origin, msg.sender);
+    }
+
+    // Transfer ownership
+    function transferOwnership(
+        uint256 _itemId,
+        address _to,
+        string memory _location
+    ) public onlyRole(PRODUCER_ROLE) {
+        require(
+            items[_itemId].currentOwner == msg.sender,
+            "Caller is not the owner."
+        );
+        items[_itemId].currentOwner = _to;
+        items[_itemId].status = 1;
+        items[_itemId].timestamp = block.timestamp;
+        items[_itemId].location = _location;
+
+        auditTrail[_itemId].push(
+            string(abi.encodePacked("Transferred to ", _location))
+        );
+        emit OwnershipTransferred(_itemId, msg.sender, _to, 1);
     }
 }
