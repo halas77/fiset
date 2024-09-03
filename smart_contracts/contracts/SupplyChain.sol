@@ -99,4 +99,48 @@ contract SupplyChain is Ownable, AccessControl {
         );
         emit OwnershipTransferred(_itemId, msg.sender, _to, 1);
     }
+
+    function updateStatus(
+        uint256 _itemId,
+        uint256 _status,
+        string memory _statusUpdate
+    ) public onlyRole(SUPPLIER_ROLE) {
+        require(
+            items[_itemId].currentOwner == msg.sender,
+            "Caller is not the owner."
+        );
+
+        items[_itemId].status = _status;
+        items[_itemId].remarks = _statusUpdate;
+        items[_itemId].timestamp = block.timestamp;
+
+        auditTrail[_itemId].push(_statusUpdate);
+    }
+
+    function inspectItem(
+        uint256 _itemId,
+        bool _passed,
+        string memory _remarks
+    ) public onlyRole(INSPECTOR_ROLE) {
+        require(items[_itemId].status == 1, "Item must be in transit.");
+
+        if (_passed) {
+            items[_itemId].status = 3;
+            items[_itemId].remarks = _remarks;
+
+            auditTrail[_itemId].push(
+                string(abi.encodePacked("Inspection passed: ", _remarks))
+            );
+        } else {
+            items[_itemId].status = 4;
+            items[_itemId].remarks = _remarks;
+
+            auditTrail[_itemId].push(
+                string(abi.encodePacked("Inspection failed: ", _remarks))
+            );
+            emit ItemRejected(_itemId, msg.sender, _remarks);
+        }
+
+        emit ItemInspected(_itemId, msg.sender, _passed, _remarks);
+    }
 }
