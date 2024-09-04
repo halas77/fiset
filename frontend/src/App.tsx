@@ -3,6 +3,8 @@ import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
+import Settings from "./pages/Settings";
+import ConnectWallet from "./pages/ConnectWallet";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Route path="/users" element={<Users />} />
         <Route path="/products" element={<Products />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/connect-wallet" element={<ConnectWallet />} />
       </Routes>
     </BrowserRouter>
   );

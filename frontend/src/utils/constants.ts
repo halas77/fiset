@@ -15,7 +15,7 @@ export const dashboardContent = [
   },
   {
     label: "Manage Products",
-    href: "/prodcuts",
+    href: "/products",
     icon: AiOutlineShoppingCart,
   },
   {
@@ -31,7 +31,7 @@ export const dashboardContent = [
 
   {
     label: "Logout",
-    href: "/logout",
+    href: "/connect-wallet",
     icon: FiLogOut,
   },
 ];

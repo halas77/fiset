@@ -1,11 +1,11 @@
 import Layout from "../components/Layout"
 
-const Users = () => {
+const Settings = () => {
   return (
     <Layout>
-     Users here
+    Settings here
   </Layout>
   )
 }
 
-export default Users
+export default Settings
