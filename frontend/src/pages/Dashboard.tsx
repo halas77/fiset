@@ -33,7 +33,7 @@ const Dashboard = () => {
           Recent activities
         </h1>
         <p className="mt-2 text-xs text-gray-500 border-b pb-2">
-          Welcome back! Here’s what’s happening with your account today.
+          Explore recent activities in your scope.
         </p>
       </div>
 

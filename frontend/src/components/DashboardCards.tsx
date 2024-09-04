@@ -9,7 +9,7 @@ interface DashboardCardsProps {
   Icon: IconType;
 }
 
-const DashboardCards = ({ title, status, Icon, href }: DashboardCardsProps) => {
+const DashboardCard = ({ title, status, Icon, href }: DashboardCardsProps) => {
   return (
     <div className="flex flex-col bg-white border shadow-sm rounded-xl">
       <div className="p-4 md:p-5 flex justify-between gap-x-3">
@@ -39,4 +39,4 @@ const DashboardCards = ({ title, status, Icon, href }: DashboardCardsProps) => {
   );
 };
 
-export default DashboardCards;
+export default DashboardCard;
