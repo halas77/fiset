@@ -60,19 +60,19 @@ export const dashboardCardsData = [
     title: "Created products",
     Icon: AiOutlineShoppingCart,
     status: "97",
-    href: "/users",
+    href: "/products",
   },
   {
     title: "Transitted products",
     Icon: GrTransaction,
     status: "54",
-    href: "/users",
+    href: "/products",
   },
   {
     title: "Delivered products",
     Icon: TbTruckDelivery,
     status: "5",
-    href: "/users",
+    href: "/products",
   },
   {
     title: "Total users",

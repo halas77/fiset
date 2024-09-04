@@ -52,7 +52,7 @@ const DashboardTable = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 bg-gray-50">
-                {[0, 1, 2, 3, 4].map((i) => (
+                {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
                   <tr
                     key={i}
                     className="cursor-pointer hover:bg-gray-100"
