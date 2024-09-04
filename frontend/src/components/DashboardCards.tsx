@@ -1,11 +1,12 @@
 import { IconType } from "react-icons";
 import { BsArrowUpRightCircle } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 interface DashboardCardsProps {
   title: string;
   status: string;
-  Icon: IconType;
   href: string;
+  Icon: IconType;
 }
 
 const DashboardCards = ({ title, status, Icon, href }: DashboardCardsProps) => {
@@ -27,13 +28,13 @@ const DashboardCards = ({ title, status, Icon, href }: DashboardCardsProps) => {
         </div>
       </div>
 
-      <a
+      <Link
         className="py-3 px-4 md:px-5 inline-flex justify-between items-center text-sm text-gray-600 border-t border-gray-200 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 rounded-b-xl"
-        href={href}
+        to={href}
       >
         View details
         <BsArrowUpRightCircle className="shrink-0" size={20} />
-      </a>
+      </Link>
     </div>
   );
 };
