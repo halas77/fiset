@@ -81,3 +81,5 @@ export const dashboardCardsData = [
     href: "/users",
   },
 ];
+
+export const productStatus = ["All", "Created", "Transitted", "Delivered"];
