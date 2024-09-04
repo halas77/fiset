@@ -1,9 +1,11 @@
 import { FiGrid, FiUsers, FiSettings, FiLogOut } from "react-icons/fi";
-import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FiMail } from "react-icons/fi";
 import { PiTelegramLogo } from "react-icons/pi";
 import { RiLinkedinBoxLine } from "react-icons/ri";
 import { RiGithubLine } from "react-icons/ri";
+import { TbTruckDelivery } from "react-icons/tb";
+import { GrTransaction } from "react-icons/gr";
 
 export const dashboardContent = [
   {
@@ -14,7 +16,7 @@ export const dashboardContent = [
   {
     label: "Manage Products",
     href: "/prodcuts",
-    icon: MdOutlineProductionQuantityLimits,
+    icon: AiOutlineShoppingCart,
   },
   {
     label: "Manage Users",
@@ -50,5 +52,32 @@ export const socialLinks = [
   {
     icons: FiMail,
     href: "mailto:youremail@example.com",
+  },
+];
+
+export const dashboardCardsData = [
+  {
+    title: "Created products",
+    Icon: AiOutlineShoppingCart,
+    status: "97",
+    href: "/users",
+  },
+  {
+    title: "Transitted products",
+    Icon: GrTransaction,
+    status: "54",
+    href: "/users",
+  },
+  {
+    title: "Delivered products",
+    Icon: TbTruckDelivery,
+    status: "5",
+    href: "/users",
+  },
+  {
+    title: "Total users",
+    Icon: FiUsers,
+    status: "20",
+    href: "/users",
   },
 ];
