@@ -1,11 +1,4 @@
-import { useNavigate } from "react-router-dom";
-import { productDummyData } from "../utils/constants";
-
-const DashboardTable = () => {
-  const navigate = useNavigate();
-  const handleNavigation = () => {
-    navigate("/product/productId");
-  };
+const UsersTable = () => {
   return (
     <div className="flex flex-col">
       <div className="-m-1.5 overflow-x-auto">
@@ -18,13 +11,13 @@ const DashboardTable = () => {
                     scope="col"
                     className="px-6 py-3 text-start text-xs font-medium text-gray-800 uppercase "
                   >
-                    Product name
+                    User adrress
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-start text-xs font-medium text-gray-800 uppercase "
                   >
-                    Current owner
+                    User Role
                   </th>
                   <th
                     scope="col"
@@ -32,53 +25,45 @@ const DashboardTable = () => {
                   >
                     Location
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-start text-xs font-medium text-gray-800 uppercase "
-                  >
-                    Status
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-start text-xs font-medium text-gray-800 uppercase "
-                  >
-                    Remarks
-                  </th>
+
                   <th
                     scope="col"
                     className="px-6 py-3 text-start text-xs font-medium text-gray-800 uppercase "
                   >
                     time
                   </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-start text-xs font-medium text-gray-800 uppercase "
+                  >
+                    Action
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 bg-gray-50">
-                {productDummyData.map((item) => (
-                  <tr
-                    key={item.id}
-                    className="cursor-pointer hover:bg-gray-100"
-                    onClick={handleNavigation}
-                  >
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 ">
-                      {item.productName}
+                {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
+                  <tr key={i} className="">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
+                      0x8dc2C8e...
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
-                      {item.owner}
-                    </td>
-
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
-                      {item.location}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
-                      <p className="inline-flex items-center gap-x-2 text-xs rounded-lg bg-indigo-200 px-2 py-0.5 border border-transparent text-indigo-700 hover:bg-indigo-300 focus:outline-none  disabled:opacity-50 disabled:pointer-events-none uppercase">
-                        {item.status}
+                      <p className=" px-0.5 py-0.5 rounded-xl  uppercase text-xs">
+                        Admin
                       </p>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
-                      {item.remarks}
+                      Gambella
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-start">
-                      {item.date}
+                      Septmber 12, 2024
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-start">
+                      <button
+                        type="button"
+                        className="inline-flex items-center gap-x-2 text-xs rounded-lg bg-red-200 px-2 py-0.5 border border-transparent text-red-700 hover:bg-red-300 focus:outline-none  disabled:opacity-50 disabled:pointer-events-none"
+                      >
+                        Revoke access
+                      </button>
                     </td>
                   </tr>
                 ))}
@@ -91,4 +76,4 @@ const DashboardTable = () => {
   );
 };
 
-export default DashboardTable;
+export default UsersTable;

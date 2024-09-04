@@ -83,3 +83,65 @@ export const dashboardCardsData = [
 ];
 
 export const productStatus = ["All", "Created", "Transitted", "Delivered"];
+
+export const userRoles = [
+  "All",
+  "Admin",
+  "Producer",
+  "Supplier",
+  "Distributor",
+  "Inspector",
+];
+
+export const productDummyData = [
+  {
+    id: 1,
+    productName: "Limu Buna",
+    owner: "0x8dc2C8e...",
+    status: "Created",
+    state: "Created",
+    location: "Ethiopia - Limu",
+    remarks: "Coffee beans harvested at high altitude.",
+    date: "September 12, 2024",
+  },
+  {
+    id: 2,
+    productName: "Yirgacheffe",
+    owner: "0x5ac1E4a...",
+    status: "Transitted",
+    state: "In Progress",
+    location: "Ethiopia - Yirgacheffe",
+    remarks: "Washed and dried at the processing station.",
+    date: "September 14, 2024",
+  },
+  {
+    id: 3,
+    productName: "Sidamo Buna",
+    owner: "0x9b8bF7c...",
+    status: "Delivered",
+    state: "Shipped",
+    location: "Ethiopia - Sidamo",
+    remarks: "Ready for export, in transit.",
+    date: "September 16, 2024",
+  },
+  {
+    id: 4,
+    productName: "Harrar Buna",
+    owner: "0xa1d5D4e...",
+    status: "Rejected",
+    state: "Stored",
+    location: "Ethiopia - Harrar",
+    remarks: "Stored in a warehouse awaiting delivery.",
+    date: "September 18, 2024",
+  },
+  {
+    id: 5,
+    productName: "Guji Buna",
+    owner: "0xc3d8C6f...",
+    status: "DELIVERED",
+    state: "Completed",
+    location: "Ethiopia - Guji",
+    remarks: "Delivered to the buyer.",
+    date: "September 20, 2024",
+  },
+];
