@@ -1,8 +1,11 @@
+import React from 'react';
 
-const Navbar = () => {
-  return (
-    <div>Navbar</div>
-  )
+interface NavbarProps {
+  className?: string;
 }
 
-export default Navbar
+const Navbar: React.FC<NavbarProps> = ({ className }) => {
+  return <div className={className}>Navbar Content</div>;
+};
+
+export default Navbar;

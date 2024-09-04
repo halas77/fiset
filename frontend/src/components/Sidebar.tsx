@@ -1,8 +1,12 @@
+import React from 'react';
 
-const Sidebar = () => {
-  return (
-    <div>Sidebar</div>
-  )
+// Define the props type for Sidebar
+interface SidebarProps {
+  className?: string;
 }
 
-export default Sidebar
+const Sidebar: React.FC<SidebarProps> = ({ className }) => {
+  return <div className={className}>Sidebar Content</div>;
+};
+
+export default Sidebar;

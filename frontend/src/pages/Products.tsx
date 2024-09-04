@@ -1,7 +1,9 @@
 
 const Products = () => {
   return (
-    <div>Products</div>
+    <div className="h-screen flex justify-center items-center">
+        Hey there
+    </div>
   )
 }
 
