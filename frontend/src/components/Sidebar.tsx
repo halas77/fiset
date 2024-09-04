@@ -12,7 +12,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
 
   return (
     <div
-      className={`absolute lg:relative w-64 h-screen shadow bg-gray-950 hidden lg:block ${className}`}
+      className={`absolute lg:relative w-[17rem] h-screen shadow bg-gray-950 hidden lg:block ${className}`}
     >
       <div className="h-16 w-full flex items-center px-4 gap-3 shadow shadow-white/20">
         <img src="/fissetLogo.png" alt="Logo Image" className="w-5 h-5" />
