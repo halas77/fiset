@@ -9,7 +9,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ className }) => {
   return (
     <div
-      className={`inset-x-0 z-[9999] before:absolute before:inset-0 before:backdrop-blur-lg before:bg-white/70 ${className}`}
+      className={`w-full bg-white ${className}`}
     >
       <nav className="h-16 flex items-center lg:items-stretch justify-end bg-transparent relative z-10 px-4">
         {/* Search Bar */}
