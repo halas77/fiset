@@ -8,15 +8,15 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ className }) => {
   const location = useLocation();
-  const currentYear = new Date().getFullYear(); // Get the current year dynamically
+  const currentYear = new Date().getFullYear();
 
   return (
     <div
       className={`absolute lg:relative w-64 h-screen shadow bg-gray-950 hidden lg:block ${className}`}
     >
       <div className="h-16 w-full flex items-center px-4 gap-3 shadow shadow-white/20">
-        <img src="/fisset_logo.png" alt="Logo Image" className="w-6 h-6" />
-        <h1 className="text-2xl font-medium text-white italic">Fisset.</h1>
+        <img src="/fissetLogo.png" alt="Logo Image" className="w-5 h-5" />
+        <h1 className="text-xl font-medium text-white">Fisset.</h1>
       </div>
       <ul className="py-6">
         {dashboardContent.map((item) => (
