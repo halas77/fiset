@@ -3,10 +3,12 @@ import Layout from "../components/Layout";
 import { useState } from "react";
 import { userRoles } from "../utils/constants";
 import Tabs from "../components/Tabs";
-import UsersTable from "../components/usersTable";
+import UsersTable from "../components/UsersTable";
+import CreateUserModal from "../components/CreateUserModal";
 
 const Users = () => {
   const [activeTab, setActiveTab] = useState("All");
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <Layout>
@@ -25,7 +27,10 @@ const Users = () => {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-        <button className="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded border border-gray-200 bg-gray-950 text-white shadow-sm hover:bg-gray-800 focus:outline-none  disabled:pointer-events-none ">
+        <button
+          onClick={() => setOpenModal(true)}
+          className="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded border border-gray-200 bg-gray-950 text-white shadow-sm hover:bg-gray-800 focus:outline-none  disabled:pointer-events-none "
+        >
           <MdAddCircleOutline size={20} />
           Create user
         </button>
@@ -35,6 +40,10 @@ const Users = () => {
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
         <UsersTable />
       </div>
+
+      {/* Create user modal */}
+
+      <div>{openModal && <CreateUserModal setOpenModal={setOpenModal} />}</div>
     </Layout>
   );
 };
