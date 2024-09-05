@@ -1,4 +1,6 @@
 import { timelineData } from "../utils/constants";
+import { GoArrowUpRight } from "react-icons/go";
+import { LuUser } from "react-icons/lu";
 
 const ProductTimeline = () => {
   return (
@@ -19,6 +21,14 @@ const ProductTimeline = () => {
             <p className="mt-1 text-sm text-gray-600 -400">
               {item.description}
             </p>
+            <button
+              type="button"
+              className="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-lg border border-transparent text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none "
+            >
+              <LuUser size={18} className="bg-gray-200 text-gray-900 rounded-full p-0.5"/>
+              0xA123AF437393742...
+              <GoArrowUpRight />
+            </button>
           </div>
         </div>
       ))}

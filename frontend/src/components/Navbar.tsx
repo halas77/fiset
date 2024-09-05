@@ -62,7 +62,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
             <img
-              className="w-12 h-12 border-2 p-1 border-gray-300 rounded-full "
+              className="w-11 h-11 border-2 p-1 border-gray-300 rounded-full "
               src="/User1.png"
               alt="User Avatar"
             />
