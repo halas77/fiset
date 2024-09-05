@@ -70,7 +70,7 @@ const DashboardTable = () => {
                       {item.location}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
-                      <p className="inline-flex items-center gap-x-2 text-xs rounded-lg bg-indigo-200 px-2 py-0.5 border border-transparent text-indigo-700 hover:bg-indigo-300 focus:outline-none  disabled:opacity-50 disabled:pointer-events-none uppercase">
+                      <p className="inline-flex items-center gap-x-2 text-xs rounded-lg bg-indigo-200 px-2 py-0.5 border border-transparent text-indigo-700  focus:outline-none  disabled:opacity-50 disabled:pointer-events-none uppercase">
                         {item.status}
                       </p>
                     </td>

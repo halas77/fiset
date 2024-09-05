@@ -28,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
 
   return (
     <div className={`w-full ${className}`}>
-      <nav className="h-16 flex items-center lg:items-stretch justify-end bg-white/30 backdrop-blur-md backdrop-opacity-70 relative z-10 px-5">
+      <nav className="h-16 flex justify-between  items-center bg-white/30 backdrop-blur-md backdrop-opacity-70 relative z-10 px-5">
         {/* Search Bar */}
         <div className="hidden lg:flex w-full pr-6">
           <div className="w-1/2 h-full hidden lg:flex items-center pl-6 pr-24">
@@ -43,6 +43,17 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
               />
             </div>
           </div>
+        </div>
+
+        {/* logo for mobile view */}
+        <div className="flex lg:hidden justify-center items-center gap-2 py-4">
+          <img
+            src="/fissetLogo.png"
+            alt="Logo Image"
+            className="w-9 h-9 bg-gray-950 p-1
+              rounded-full"
+          />
+          <h1 className="text-2xl font-semibold text-gray-900">Fisset.</h1>
         </div>
 
         <div className="relative flex items-center space-x-4">
@@ -69,7 +80,9 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
                   <Link key={item.href} to={item.href}>
                     <li className="py-3 px-4 hover:bg-gray-100 text-sm text-gray-800 cursor-pointer flex items-center gap-3 transition-all duration-150 ease-in-out">
                       <item.icon className="text-gray-950  transition duration-150" />
-                      <span className="font-medium text-gray-950">{item.label}</span>
+                      <span className="font-medium text-gray-950">
+                        {item.label}
+                      </span>
                     </li>
                   </Link>
                 ))}

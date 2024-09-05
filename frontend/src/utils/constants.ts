@@ -145,3 +145,52 @@ export const productDummyData = [
     date: "September 20, 2024",
   },
 ];
+
+export const productDetailData = {
+  id: 1,
+  name: "Ethiopian Coffee",
+  origin: "Yirgacheffe, Ethiopia",
+  currentOwner: "0x1234567890abcdef1234567890abcdef12345678",
+  status: 1,
+  timestamp: "2024-09-05",
+  location: "Warehouse A, Addis Ababa",
+  remarks: "High-quality beans, stored at optimal conditions.",
+};
+
+export const timelineData = [
+  {
+    time: "10:00 AM",
+    title: "Product Created",
+    description:
+      "The product was successfully created and registered in the system.",
+    user: "0x123456789ABCDEF",
+  },
+  {
+    time: "11:30 AM",
+    title: "Quality Check Completed",
+    description:
+      "The product passed the quality assurance checks and was approved for dispatch.",
+    user: "0xABCDEF123456789",
+  },
+  {
+    time: "01:00 PM",
+    title: "Dispatched to Warehouse",
+    description:
+      "The product was dispatched from the manufacturing unit to the main warehouse.",
+    user: "0xFEDCBA987654321",
+  },
+  {
+    time: "03:45 PM",
+    title: "In Transit",
+    description:
+      "The product is currently in transit to the distribution center.",
+    user: "0x123ABC456DEF789",
+  },
+  {
+    time: "05:15 PM",
+    title: "Delivered to Retailer",
+    description:
+      "The product was successfully delivered to the retailer for customer sales.",
+    user: "0x987FED654CBA321",
+  },
+];
