@@ -37,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
                 <FaSearch className="text-gray-400" size={16} />
               </div>
               <input
-                className="border border-gray-200 focus:border-gray-400 rounded w-full text-sm text-gray-700 bg-gray-50 pl-12 py-2.5 focus:outline-none transition duration-200"
+                className="border border-gray-200 focus:border-gray-400 rounded w-full text-sm text-gray-700 bg-gray-50 pl-12 py-2.5 focus:outline-none transition duration-200 focus:ring-gray-950"
                 type="text"
                 placeholder="Search..."
               />

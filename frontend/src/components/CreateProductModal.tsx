@@ -36,7 +36,7 @@ const CreateProductModal = ({ setOpenModal }: CreateProductModalProp) => {
               <input
                 type="text"
                 name="productName"
-                className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm  placeholder-gray-400"
+                className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-gray-950 focus:ring-gray-950  placeholder-gray-400 transition duration-300  ease-in-out"
                 placeholder="e.g., Organic Coffee Beans"
                 required
               />
@@ -52,7 +52,7 @@ const CreateProductModal = ({ setOpenModal }: CreateProductModalProp) => {
               <input
                 type="text"
                 name="origin"
-                className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm  placeholder-gray-400"
+                className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-gray-950 focus:ring-gray-950  placeholder-gray-400 transition duration-300  ease-in-out"
                 placeholder="e.g. Keffa, Ethiopia"
                 required
               />

@@ -37,7 +37,7 @@ const CreateUserModal = ({ setOpenModal }: CreateUserModalProp) => {
               <input
                 type="text"
                 name="walletAddress"
-                className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm placeholder-gray-400 focus:border-gray-950 focus:ring-gray-950"
+                className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm placeholder-gray-400 focus:border-gray-950 focus:ring-gray-950 transition ease-in-out duration-300"
                 placeholder="Enter user's wallet address"
                 required
               />
@@ -50,7 +50,7 @@ const CreateUserModal = ({ setOpenModal }: CreateUserModalProp) => {
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Role
               </label>
-              <select className="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-gray-950 focus:ring-gray-950 disabled:opacity-50 disabled:pointer-events-none">
+              <select className="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-gray-950 focus:ring-gray-950 disabled:opacity-50 disabled:pointer-events-none transition duration-300  ease-in-out">
                 <option value="" disabled selected>
                   Select user role
                 </option>
