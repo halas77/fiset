@@ -1,8 +1,11 @@
+import Layout from "../components/Layout";
 
 const ProductDetail = () => {
   return (
-    <div>ProductDetail</div>
-  )
-}
+    <Layout>
+      <div>ProductDetail</div>
+    </Layout>
+  );
+};
 
-export default ProductDetail
+export default ProductDetail;

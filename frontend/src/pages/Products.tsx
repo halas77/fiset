@@ -4,9 +4,11 @@ import Tabs from "../components/Tabs";
 import { productStatus } from "../utils/constants";
 import { MdAddCircleOutline } from "react-icons/md";
 import ProductsTable from "../components/ProductsTable";
+import CreateProductModal from "../components/CreateProductModal";
 
 const Products = () => {
   const [activeTab, setActiveTab] = useState("All");
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <Layout>
@@ -26,7 +28,10 @@ const Products = () => {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-        <button className="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded border border-gray-200 bg-gray-950 text-white shadow-sm hover:bg-gray-800 focus:outline-none  disabled:pointer-events-none ">
+        <button
+          onClick={() => setOpenModal(true)}
+          className="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded border border-gray-200 bg-gray-950 text-white shadow-sm hover:bg-gray-800 focus:outline-none  disabled:pointer-events-none "
+        >
           <MdAddCircleOutline size={20} />
           Create product
         </button>
@@ -35,6 +40,11 @@ const Products = () => {
       {/* table */}
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
         <ProductsTable activeTab={activeTab} />
+      </div>
+
+      {/* Create product modal */}
+      <div>
+        {openModal && <CreateProductModal setOpenModal={setOpenModal} />}
       </div>
     </Layout>
   );
