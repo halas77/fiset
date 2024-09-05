@@ -29,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
         <div className="flex items-center space-x-4">
           <Link to="#" className="relative group">
             <img
-              className="inline-block w-12 h-12 border-2 p-0.5 border-gray-200 rounded-full"
+              className="inline-block w-11 h-11 border-2 p-0.5 border-gray-200 rounded-full"
               src="/User1.png"
               alt="User Avatar"
             />
