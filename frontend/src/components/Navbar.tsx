@@ -8,10 +8,8 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ className }) => {
   return (
-    <div
-      className={`w-full bg-white ${className}`}
-    >
-      <nav className="h-16 flex items-center lg:items-stretch justify-end bg-transparent relative z-10 px-4">
+    <div className={`w-full bg-white ${className}`}>
+      <nav className="h-16 flex items-center lg:items-stretch justify-end bg-transparent relative z-10 px-5">
         {/* Search Bar */}
         <div className="hidden lg:flex w-full pr-6">
           <div className="w-1/2 h-full hidden lg:flex items-center pl-6 pr-24">
@@ -31,11 +29,11 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
         <div className="flex items-center space-x-4">
           <Link to="#" className="relative group">
             <img
-              className="inline-block w-10 h-10 border-2 border-gray-200 rounded-full transition-transform transform group-hover:scale-105"
-              src="/user.jpg"
+              className="inline-block w-12 h-12 border-2 p-0.5 border-gray-200 rounded-full"
+              src="/User1.png"
               alt="User Avatar"
             />
-            <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
+            <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
           </Link>
         </div>
       </nav>
