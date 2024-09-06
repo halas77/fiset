@@ -1,6 +1,6 @@
 const ConnectWallet = () => {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-2">
       <div className="p-6 sm:p-8 border rounded-3xl shadow-lg bg-white max-w-md">
         <div className="text-center">
           <div className="flex justify-center items-center gap-2 py-4">

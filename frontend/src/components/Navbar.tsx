@@ -28,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
 
   return (
     <div className={`w-full ${className}`}>
-      <nav className="h-16 flex justify-between  items-center bg-white/30 backdrop-blur-md backdrop-opacity-70 relative z-10 px-5">
+      <nav className="h-16 flex justify-between items-center bg-white/10 backdrop-blur-lg  relative z-10 px-5">
         {/* Search Bar */}
         <div className="hidden lg:flex w-full pr-6">
           <div className="w-1/2 h-full hidden lg:flex items-center pl-6 pr-24">

@@ -6,7 +6,7 @@ interface CreateProductModalProp {
 
 const CreateProductModal = ({ setOpenModal }: CreateProductModalProp) => {
   return (
-    <div className="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center">
+    <div className="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center p-2">
       <div className="bg-white rounded-xl shadow-lg p-8 max-w-lg w-full">
         <div className="flex justify-between items-start mb-6 border-b pb-2">
           <div>

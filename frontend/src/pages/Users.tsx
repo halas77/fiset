@@ -13,7 +13,7 @@ const Users = () => {
   return (
     <Layout>
       {/* Header Section */}
-      <header className="text-gray-900 py-2 px-8">
+      <header className="text-gray-900 py-2 sm:px-6 lg:px-8">
         <h1 className="text-2xl font-semibold tracking-wide">Manage users</h1>
         <p className="mt-1 text-xs text-gray-500 border-b pb-2">
           Here you can manage users
@@ -21,7 +21,7 @@ const Users = () => {
       </header>
 
       {/* tabs */}
-      <div className="text-gray-900 py-2 px-8 mb-3 flex justify-between items-center">
+      <div className="text-gray-900 py-2 sm:px-6 lg:px-8 mb-3 flex flex-col-reverse lg:flex-row justify-between items-start lg:items-center gap-2">
         <Tabs
           data={userRoles}
           activeTab={activeTab}
@@ -37,7 +37,7 @@ const Users = () => {
       </div>
 
       {/* table */}
-      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto sm:px-6 lg:px-8">
         <UsersTable />
       </div>
 

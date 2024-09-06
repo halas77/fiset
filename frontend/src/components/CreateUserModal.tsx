@@ -7,7 +7,7 @@ interface CreateUserModalProp {
 
 const CreateUserModal = ({ setOpenModal }: CreateUserModalProp) => {
   return (
-    <div className="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center">
+    <div className="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center px-2">
       <div className="bg-white rounded-xl shadow-lg p-8 max-w-lg w-full">
         <div className="flex justify-between items-start mb-6 border-b pb-2">
           <div>
@@ -51,13 +51,12 @@ const CreateUserModal = ({ setOpenModal }: CreateUserModalProp) => {
                 Role
               </label>
               <select className="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-gray-950 focus:ring-gray-950 disabled:opacity-50 disabled:pointer-events-none transition duration-300  ease-in-out">
-                <option value="" disabled selected>
-                  Select user role
-                </option>
                 {userRoles
                   .filter((role) => role !== "All")
-                  .map((role) => (
-                    <option value={role}>{role}</option>
+                  .map((role, idx) => (
+                    <option key={idx} value={role}>
+                      {role}
+                    </option>
                   ))}
               </select>
               <p className="text-xs text-gray-500 mt-1">

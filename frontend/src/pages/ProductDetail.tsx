@@ -10,7 +10,7 @@ const ProductDetail = () => {
   return (
     <Layout>
       {/* Header Section */}
-      <header className="text-gray-900 pt-2 px-8 flex justify-between items-center">
+      <header className="text-gray-900 pt-2 sm:px-6 lg:px-8 flex flex-col lg:flex-row lg:justify-between lg:items-center items-start gap-2">
         <div>
           <h1 className="text-2xl font-semibold tracking-wide">Product name</h1>
           <p className="mt-1 text-xs text-gray-950  pb-2">
@@ -19,7 +19,7 @@ const ProductDetail = () => {
         </div>
         <button
           onClick={() => setOpenModal(true)}
-          className="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded border border-gray-200 bg-gray-950 text-white shadow-sm hover:bg-gray-800 focus:outline-none  disabled:pointer-events-none "
+          className="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded border border-gray-200 bg-gray-950 text-white shadow-sm hover:bg-gray-800 focus:outline-none  disabled:pointer-events-none mb-2"
         >
           <RxUpdate size={18} />
           Update status
@@ -29,7 +29,7 @@ const ProductDetail = () => {
       {openModal && <UpdateStatus setOpenModal={setOpenModal} />}
 
       {/* Grid Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 p-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:px-6 lg:px-8">
         {/* Product Attributes */}
         <ProductDetailList />
 

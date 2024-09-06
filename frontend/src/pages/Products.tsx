@@ -13,7 +13,7 @@ const Products = () => {
   return (
     <Layout>
       {/* Header Section */}
-      <header className="text-gray-900 py-2 px-8">
+      <header className="text-gray-900 py-2  sm:px-6 lg:px-8">
         <h1 className="text-2xl font-semibold tracking-wide">
           Manage products
         </h1>
@@ -21,7 +21,7 @@ const Products = () => {
           Here you can manage prodcuts
         </p>
       </header>
-      <div className="text-gray-900 py-2 px-8 mb-3 flex justify-between items-center">
+      <div className="text-gray-900 py-2  sm:px-6 lg:px-8 mb-3 flex flex-col-reverse lg:flex-row lg:justify-between lg:items-center items-start gap-2">
         <Tabs
           data={productStatus}
           activeTab={activeTab}
@@ -37,7 +37,7 @@ const Products = () => {
       </div>
 
       {/* table */}
-      <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[85rem] mx-auto  sm:px-6 lg:px-8">
         <ProductsTable activeTab={activeTab} />
       </div>
       {/* Create product modal */}

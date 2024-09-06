@@ -8,8 +8,8 @@ const Tabs = ({ data, setActiveTab, activeTab }: TabsProps) => {
   return (
     <div>
       <div className="flex">
-        <div className="flex bg-gray-200  rounded transition py-1 px-2  -600">
-          <nav className="flex gap-x-2">
+        <div className="flex bg-gray-200  rounded transition py-1 px-2 ">
+          <nav className="flex gap-x-2  overflow-x-auto w-[20rem] sm:w-[30rem] md:w-full [&::-webkit-scrollbar]:w-0">
             {data.map((item: string) => (
               <button
                 key={item}

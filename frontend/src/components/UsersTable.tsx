@@ -1,7 +1,7 @@
 const UsersTable = () => {
   return (
     <div className="flex flex-col">
-      <div className="-m-1.5 overflow-x-auto">
+      <div className="-m-1.5 overflow-x-auto  w-[22rem] sm:w-[30rem] md:w-full [&::-webkit-scrollbar]:w-0">
         <div className="p-1.5 min-w-full inline-block align-middle">
           <div className="border rounded-lg shadow overflow-hidden  ">
             <table className="min-w-full divide-y divide-gray-200 ">
