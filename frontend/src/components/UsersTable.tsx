@@ -19,12 +19,6 @@ const UsersTable = () => {
                   >
                     User Role
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-start text-xs font-medium text-gray-800 uppercase "
-                  >
-                    Location
-                  </th>
 
                   <th
                     scope="col"
@@ -44,20 +38,24 @@ const UsersTable = () => {
                 {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
                   <tr key={i} className="">
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
-                      0x8dc2C8e...
+                      0x8dc2C8ecDFr31...
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
                       <p className=" px-0.5 py-0.5 rounded-xl  uppercase text-xs">
                         Admin
                       </p>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 ">
-                      Gambella
-                    </td>
+
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-start">
                       Septmber 12, 2024
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-start">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-start flex gap-2">
+                      <button
+                        type="button"
+                        className="inline-flex items-center gap-x-2 text-xs rounded-lg bg-green-200 px-2 py-0.5 border border-transparent text-green-700 hover:bg-green-300 focus:outline-none  disabled:opacity-50 disabled:pointer-events-none"
+                      >
+                        Grant access
+                      </button>
                       <button
                         type="button"
                         className="inline-flex items-center gap-x-2 text-xs rounded-lg bg-red-200 px-2 py-0.5 border border-transparent text-red-700 hover:bg-red-300 focus:outline-none  disabled:opacity-50 disabled:pointer-events-none"
