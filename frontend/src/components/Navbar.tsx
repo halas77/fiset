@@ -46,7 +46,10 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
         </div>
 
         {/* logo for mobile view */}
-        <div className="flex lg:hidden justify-center items-center gap-2 py-4">
+        <Link
+          to={"/"}
+          className="flex lg:hidden justify-center items-center gap-2 py-4"
+        >
           <img
             src="/fissetLogo.png"
             alt="Logo Image"
@@ -54,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
               rounded-full"
           />
           <h1 className="text-2xl font-semibold text-gray-900">Fisset.</h1>
-        </div>
+        </Link>
 
         <div className="relative flex items-center space-x-4">
           <div

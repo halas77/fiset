@@ -14,10 +14,13 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
     <div
       className={`absolute lg:relative w-[17rem] h-screen shadow bg-gray-950 hidden lg:block ${className}`}
     >
-      <div className="h-16 w-full flex items-center px-4 gap-3 shadow shadow-white/20">
+      <Link
+        to={"/"}
+        className="h-16 w-full flex items-center px-4 gap-3 shadow shadow-white/20"
+      >
         <img src="/fissetLogo.png" alt="Logo Image" className="w-5 h-5" />
         <h1 className="text-xl font-medium text-white">Fisset.</h1>
-      </div>
+      </Link>
       <ul className="py-6">
         {dashboardContent.map((item) => (
           <Link to={item.href} key={item.href}>
