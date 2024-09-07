@@ -1,4 +1,4 @@
-# Fisset | Supply Chain Management Platform
+# Fisset(ፍሰት) | Supply Chain Management Platform
 
 Fisset is a blockchain-based supply chain management platform developed using Solidity and React-ts. It aims to provide real-world functionalities for tracking and managing items throughout the supply chain with transparency, security, and traceability. The platform supports roles such as Producers, Suppliers, Retailers, and Consumers, each playing a key part in the supply chain process.
 
