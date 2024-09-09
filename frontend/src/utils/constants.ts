@@ -1,4 +1,4 @@
-import { FiGrid, FiUsers, FiSettings, FiLogOut } from "react-icons/fi";
+import { FiGrid, FiUsers, FiSettings } from "react-icons/fi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FiMail } from "react-icons/fi";
 import { PiTelegramLogo } from "react-icons/pi";
