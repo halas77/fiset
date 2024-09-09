@@ -1,17 +1,15 @@
-import { useContext } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { MainContext } from "../context/MainContext";
+import { useMainContext } from "../context/MainContext";
+import Loader from "./Loader";
 
 const PrivateRoute = () => {
-  const context = useContext(MainContext);
+  const { account, isLoading } = useMainContext();
 
-  console.log("context", context);
+  if (isLoading) {
+    return <Loader />;
+  }
 
-  return context?.account !== "" ? (
-    <Outlet />
-  ) : (
-    <Navigate to="/connect-wallet" replace />
-  );
+  return account ? <Outlet /> : <Navigate to="/connect-wallet" replace />;
 };
 
 export default PrivateRoute;

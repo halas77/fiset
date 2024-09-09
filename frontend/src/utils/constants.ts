@@ -28,12 +28,6 @@ export const dashboardContent = [
     href: "/settings",
     icon: FiSettings,
   },
-
-  {
-    label: "Logout",
-    href: "/connect-wallet",
-    icon: FiLogOut,
-  },
 ];
 
 export const socialLinks = [

@@ -1,6 +1,8 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { dashboardContent, socialLinks } from "../utils/constants";
+import { FiLogOut } from "react-icons/fi";
+import { useMainContext } from "../context/MainContext";
 
 interface SidebarProps {
   className?: string;
@@ -8,7 +10,15 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ className }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
+
+  const { disconnectWallet } = useMainContext();
+
+  const handleLogout = () => {
+    navigate("/connect-wallet");
+    disconnectWallet();
+  };
 
   return (
     <div
@@ -36,6 +46,17 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
             </li>
           </Link>
         ))}
+        <li
+          onClick={handleLogout}
+          className={`pl-5 cursor-pointer text-sm leading-3 tracking-normal pb-4 pt-5 flex items-center text-indigo-50 hover:bg-gray-800 transition hover:border-l-2 ease-in-out duration-300 ${
+            location.pathname === "/connect-wallet"
+              ? "bg-gray-800 text-white border-l-2"
+              : ""
+          }`}
+        >
+          <FiLogOut className="mr-3" size={20} />
+          Logout
+        </li>
       </ul>
 
       {/* Footer Section */}

@@ -1,4 +1,16 @@
+import { useNavigate } from "react-router-dom";
+import { useMainContext } from "../context/MainContext";
+
 const ConnectWallet = () => {
+  const { connectWallet } = useMainContext();
+
+  const navigate = useNavigate();
+
+  const handleConnectWallet = async () => {
+    connectWallet();
+    navigate("/");
+  };
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-2">
       <div className="p-6 sm:p-8 border rounded-3xl shadow-lg bg-white max-w-md">
@@ -19,7 +31,10 @@ const ConnectWallet = () => {
         </div>
 
         <div className="mt-6">
-          <button className="w-full py-3 px-4 flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-gradient-to-r from-gray-800 to-gray-950 text-white hover:from-gray-800 hover:to-gray-800 focus:outline-none ">
+          <button
+            onClick={() => handleConnectWallet()}
+            className="w-full py-3 px-4 flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg bg-gradient-to-r from-gray-800 to-gray-950 text-white hover:from-gray-800 hover:to-gray-800 focus:outline-none "
+          >
             Connect Wallet
           </button>
           <p className="mt-4 text-xs text-gray-500 text-center">
