@@ -52,7 +52,7 @@ export const MainProvider = ({ children }: { children: ReactNode }) => {
   const disconnectWallet = async () => {
     setAccount("");
     alert(
-      "Wallet disconnected. Please go to your MetaMask extension, click the three dots next to your account, and remove this site from the 'Connected sites' list to fully disconnect."
+      "Wallet disconnected. Please go to your MetaMask extension, Remove this site from the 'Connected sites' list to fully disconnect."
     );
   };
 

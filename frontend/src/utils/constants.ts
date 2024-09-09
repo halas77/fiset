@@ -33,19 +33,19 @@ export const dashboardContent = [
 export const socialLinks = [
   {
     icons: RiGithubLine,
-    href: "https://github.com/yourprofile",
+    href: "https://github.com/halas77",
   },
   {
     icons: PiTelegramLogo,
-    href: "https://t.me/yourprofile",
+    href: "https://t.me/halas7",
   },
   {
     icons: RiLinkedinBoxLine,
-    href: "https://linkedin.com/in/yourprofile",
+    href: "https://www.linkedin.com/in/dawit-mellese/",
   },
   {
     icons: FiMail,
-    href: "mailto:youremail@example.com",
+    href: "mailto:dawitm777@gmail.com",
   },
 ];
 

@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { dashboardContent } from "../utils/constants";
+import { FiLogOut } from "react-icons/fi";
+import { useMainContext } from "../context/MainContext";
 
 interface NavbarProps {
   className?: string;
@@ -10,6 +12,14 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ className }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const navigate = useNavigate();
+  const { disconnectWallet } = useMainContext();
+
+  const handleLogout = () => {
+    navigate("/connect-wallet");
+    disconnectWallet();
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -89,6 +99,13 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
                     </li>
                   </Link>
                 ))}
+                <li
+                  onClick={handleLogout}
+                  className={`py-3 px-4 hover:bg-gray-100 text-sm text-gray-800 cursor-pointer flex items-center gap-3 transition-all duration-150 ease-in-out`}
+                >
+                  <FiLogOut className="text-gray-950  transition duration-150" />
+                  <span className="font-medium text-gray-950">Logout</span>
+                </li>
               </ul>
             </div>
           )}

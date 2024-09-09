@@ -67,10 +67,9 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
           {socialLinks.map((item) => (
             <a
               key={item.href}
-              href="https://github.com/yourprofile"
+              href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub"
             >
               <item.icons
                 className="text-white hover:text-gray-400 transition-colors duration-200"

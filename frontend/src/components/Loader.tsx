@@ -1,4 +1,3 @@
-// Loader.tsx
 import { useState, useEffect } from "react";
 
 const Loader = () => {
@@ -19,9 +18,22 @@ const Loader = () => {
   return (
     <div className="flex flex-col w-full h-screen justify-center items-center bg-white text-black">
       <div className="relative flex items-center justify-center mb-10">
-        <div className="animate-spin rounded-full h-40 w-40 border-b-2 border-gray-900" />
+        <div className="flex flex-col justify-center items-center gap-5">
+          <div className="flex gap-2 justify-center items-center my-4">
+            <img
+              src="/fissetLogo.png"
+              alt="Logo Image"
+              className="w-9 h-9 bg-gray-950 p-1
+              rounded-full"
+            />
+            <h1 className="text-2xl font-semibold text-gray-900">Fisset.</h1>
+          </div>
+          <div className="relative flex items-center justify-center">
+            <div className="h-8 w-8 bg-gray-500 rounded-full animate-ping" />
+          </div>
+        </div>
       </div>
-      <p className="mt-20 text-sm font-normal text-center max-w-lg">
+      <p className="mt-5 text-xs font-normal text-center max-w-xs">
         {randomFact}
       </p>
     </div>
