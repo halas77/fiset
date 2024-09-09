@@ -31,9 +31,15 @@ contract SupplyChain is Ownable, AccessControl {
         string remarks;
     }
 
+    struct AuditTrail {
+        address caller;
+        string remarks;
+        uint256 timestamp;
+    }
+
     uint256 public itemCounter;
     mapping(uint256 => Item) public items;
-    mapping(uint256 => string[]) public auditTrail;
+    mapping(uint256 => AuditTrail[]) public auditTrail; // Updated mapping for audit trail
 
     // events
     event ItemCreated(
@@ -82,7 +88,12 @@ contract SupplyChain is Ownable, AccessControl {
             remarks: "Item Created."
         });
 
-        auditTrail[itemCounter].push("Created at Origin by producer.");
+        auditTrail[itemCounter].push(AuditTrail({
+            caller: msg.sender,
+            remarks: "Created at Origin by producer.",
+            timestamp: block.timestamp
+        }));
+
         emit ItemCreated(itemCounter, _name, _origin, msg.sender);
     }
 
@@ -101,9 +112,12 @@ contract SupplyChain is Ownable, AccessControl {
         items[_itemId].timestamp = block.timestamp;
         items[_itemId].location = _location;
 
-        auditTrail[_itemId].push(
-            string(abi.encodePacked("Transferred to ", _location))
-        );
+        auditTrail[_itemId].push(AuditTrail({
+            caller: msg.sender,
+            remarks: string(abi.encodePacked("Transferred to ", _location)),
+            timestamp: block.timestamp
+        }));
+
         emit OwnershipTransferred(
             _itemId,
             msg.sender,
@@ -126,7 +140,11 @@ contract SupplyChain is Ownable, AccessControl {
         items[_itemId].remarks = _statusUpdate;
         items[_itemId].timestamp = block.timestamp;
 
-        auditTrail[_itemId].push(_statusUpdate);
+        auditTrail[_itemId].push(AuditTrail({
+            caller: msg.sender,
+            remarks: _statusUpdate,
+            timestamp: block.timestamp
+        }));
     }
 
     function inspectItem(
@@ -143,16 +161,20 @@ contract SupplyChain is Ownable, AccessControl {
             items[_itemId].status = ItemStatus.QualityChecked;
             items[_itemId].remarks = _remarks;
 
-            auditTrail[_itemId].push(
-                string(abi.encodePacked("Inspection passed: ", _remarks))
-            );
+            auditTrail[_itemId].push(AuditTrail({
+                caller: msg.sender,
+                remarks: string(abi.encodePacked("Inspection passed: ", _remarks)),
+                timestamp: block.timestamp
+            }));
         } else {
             items[_itemId].status = ItemStatus.Rejected;
             items[_itemId].remarks = _remarks;
 
-            auditTrail[_itemId].push(
-                string(abi.encodePacked("Inspection failed: ", _remarks))
-            );
+            auditTrail[_itemId].push(AuditTrail({
+                caller: msg.sender,
+                remarks: string(abi.encodePacked("Inspection failed: ", _remarks)),
+                timestamp: block.timestamp
+            }));
             emit ItemRejected(_itemId, msg.sender, _remarks);
         }
 
@@ -168,7 +190,12 @@ contract SupplyChain is Ownable, AccessControl {
         items[_itemId].status = ItemStatus.Delivered;
         items[_itemId].timestamp = block.timestamp;
         items[_itemId].remarks = "Delivered";
-        auditTrail[_itemId].push("Delivered to final destination.");
+
+        auditTrail[_itemId].push(AuditTrail({
+            caller: msg.sender,
+            remarks: "Delivered to final destination.",
+            timestamp: block.timestamp
+        }));
 
         emit OwnershipTransferred(
             _itemId,
@@ -182,9 +209,11 @@ contract SupplyChain is Ownable, AccessControl {
         uint256 _itemId,
         string memory _resolution
     ) public onlyRole(DEFAULT_ADMIN_ROLE) {
-        auditTrail[_itemId].push(
-            string(abi.encodePacked("Dispute resolved: ", _resolution))
-        );
+        auditTrail[_itemId].push(AuditTrail({
+            caller: msg.sender,
+            remarks: string(abi.encodePacked("Dispute resolved: ", _resolution)),
+            timestamp: block.timestamp
+        }));
 
         items[_itemId].remarks = _resolution;
     }
@@ -199,7 +228,7 @@ contract SupplyChain is Ownable, AccessControl {
 
     function getAuditTrail(
         uint256 _itemId
-    ) public view returns (string[] memory) {
+    ) public view returns (AuditTrail[] memory) {
         return auditTrail[_itemId];
     }
 }
