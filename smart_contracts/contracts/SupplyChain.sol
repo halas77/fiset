@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
-import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
-import { AccessControl } from "@openzeppelin/contracts/access/AccessControl.sol";
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
 
 contract SupplyChain is Ownable, AccessControl {
     bytes32 public constant PRODUCER_ROLE = keccak256("PRODUCER_ROLE");
@@ -12,17 +12,20 @@ contract SupplyChain is Ownable, AccessControl {
     bytes32 public constant RETAILER_ROLE = keccak256("RETAILER_ROLE");
     bytes32 public constant INSPECTOR_ROLE = keccak256("INSPECTOR_ROLE");
 
+    enum ItemStatus {
+        Created,
+        InTransit,
+        Delivered,
+        QualityChecked,
+        Rejected
+    }
+
     struct Item {
         uint256 id;
         string name;
         string origin;
         address currentOwner;
-        // 0: Created,
-        // 1: In Transit,
-        // 2: Delivered,
-        // 3: Quality Checked,
-        // 4: Rejected
-        uint256 status;
+        ItemStatus status;
         uint256 timestamp;
         string location;
         string remarks;
@@ -43,7 +46,7 @@ contract SupplyChain is Ownable, AccessControl {
         uint256 indexed itemId,
         address indexed from,
         address indexed to,
-        uint256 status
+        ItemStatus status
     );
     event ItemInspected(
         uint256 indexed itemId,
@@ -62,7 +65,6 @@ contract SupplyChain is Ownable, AccessControl {
     }
 
     // Create item
-
     function createItem(
         string memory _name,
         string memory _origin
@@ -74,7 +76,7 @@ contract SupplyChain is Ownable, AccessControl {
             name: _name,
             origin: _origin,
             currentOwner: msg.sender,
-            status: 0,
+            status: ItemStatus.Created,
             timestamp: block.timestamp,
             location: "Origin",
             remarks: "Item Created."
@@ -95,19 +97,24 @@ contract SupplyChain is Ownable, AccessControl {
             "Caller is not the owner."
         );
         items[_itemId].currentOwner = _to;
-        items[_itemId].status = 1;
+        items[_itemId].status = ItemStatus.InTransit;
         items[_itemId].timestamp = block.timestamp;
         items[_itemId].location = _location;
 
         auditTrail[_itemId].push(
             string(abi.encodePacked("Transferred to ", _location))
         );
-        emit OwnershipTransferred(_itemId, msg.sender, _to, 1);
+        emit OwnershipTransferred(
+            _itemId,
+            msg.sender,
+            _to,
+            ItemStatus.InTransit
+        );
     }
 
     function updateStatus(
         uint256 _itemId,
-        uint256 _status,
+        ItemStatus _status,
         string memory _statusUpdate
     ) public onlyRole(SUPPLIER_ROLE) {
         require(
@@ -127,17 +134,20 @@ contract SupplyChain is Ownable, AccessControl {
         bool _passed,
         string memory _remarks
     ) public onlyRole(INSPECTOR_ROLE) {
-        require(items[_itemId].status == 1, "Item must be in transit.");
+        require(
+            items[_itemId].status == ItemStatus.InTransit,
+            "Item must be in transit."
+        );
 
         if (_passed) {
-            items[_itemId].status = 3;
+            items[_itemId].status = ItemStatus.QualityChecked;
             items[_itemId].remarks = _remarks;
 
             auditTrail[_itemId].push(
                 string(abi.encodePacked("Inspection passed: ", _remarks))
             );
         } else {
-            items[_itemId].status = 4;
+            items[_itemId].status = ItemStatus.Rejected;
             items[_itemId].remarks = _remarks;
 
             auditTrail[_itemId].push(
@@ -155,12 +165,17 @@ contract SupplyChain is Ownable, AccessControl {
             "Caller is not the owner"
         );
 
-        items[_itemId].status = 2;
+        items[_itemId].status = ItemStatus.Delivered;
         items[_itemId].timestamp = block.timestamp;
         items[_itemId].remarks = "Delivered";
         auditTrail[_itemId].push("Delivered to final destination.");
 
-        emit OwnershipTransferred(_itemId, msg.sender, address(0), 2);
+        emit OwnershipTransferred(
+            _itemId,
+            msg.sender,
+            address(0),
+            ItemStatus.Delivered
+        );
     }
 
     function resolveDispute(
