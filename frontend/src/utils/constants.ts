@@ -6,6 +6,10 @@ import { RiLinkedinBoxLine } from "react-icons/ri";
 import { RiGithubLine } from "react-icons/ri";
 import { TbTruckDelivery } from "react-icons/tb";
 import { GrTransaction } from "react-icons/gr";
+import abi from "./abi.json";
+
+export const contractAddress = "0x7aaEEDb9596Aab96933645AAbE4A6C67d0Cfb665";
+export const contractABI = abi.abi;
 
 export const dashboardContent = [
   {

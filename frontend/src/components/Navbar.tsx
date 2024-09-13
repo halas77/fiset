@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { dashboardContent } from "../utils/constants";
 import { FiLogOut } from "react-icons/fi";
 import { useMainContext } from "../context/MainContext";
+import { createItem } from "../contract/manageProduct";
 
 interface NavbarProps {
   className?: string;
@@ -54,6 +55,12 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
             </div>
           </div>
         </div>
+        <button
+          onClick={createItem}
+          className="p-2 rounded bg-black text-white"
+        >
+          Click me
+        </button>
 
         {/* logo for mobile view */}
         <Link
