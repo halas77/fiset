@@ -39,8 +39,7 @@ contract SupplyChain is Ownable, AccessControl {
 
     uint256 public itemCounter;
     mapping(uint256 => Item) public items;
-    mapping(uint256 => AuditTrail[]) public auditTrail; // Updated mapping for audit trail
-
+    mapping(uint256 => AuditTrail[]) public auditTrail;
     // events
     event ItemCreated(
         uint256 indexed itemId,
@@ -95,6 +94,14 @@ contract SupplyChain is Ownable, AccessControl {
         }));
 
         emit ItemCreated(itemCounter, _name, _origin, msg.sender);
+    }
+
+     function getAllItems() public view returns (Item[] memory) {
+        Item[] memory allItems = new Item[](itemCounter);
+        for (uint256 i = 1; i <= itemCounter; i++) {
+            allItems[i - 1] = items[i];
+        }
+        return allItems;
     }
 
     // Transfer ownership
