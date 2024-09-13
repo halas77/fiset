@@ -5,6 +5,7 @@ import { dashboardContent } from "../utils/constants";
 import { FiLogOut } from "react-icons/fi";
 import { useMainContext } from "../context/MainContext";
 import { createItem } from "../contract/manageProduct";
+import { addRole } from "../contract/manageUser";
 
 interface NavbarProps {
   className?: string;
@@ -56,7 +57,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
           </div>
         </div>
         <button
-          onClick={createItem}
+          onClick={addRole}
           className="p-2 rounded bg-black text-white"
         >
           Click me
