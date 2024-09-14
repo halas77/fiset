@@ -16,8 +16,9 @@ const CreateProductModal = ({ setOpenModal }: CreateProductModalProp) => {
     try {
       setLoading(true);
       await createItem({ name, origin });
-      setLoading(false)
-      setOpenModal(false)
+      setLoading(false);
+      window.location.reload();
+      setOpenModal(false);
     } catch (error) {
       console.log("error", error);
       setLoading(false);
