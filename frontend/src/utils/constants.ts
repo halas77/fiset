@@ -80,7 +80,26 @@ export const dashboardCardsData = [
   },
 ];
 
-export const productStatus = ["All", "Created", "Transitted", "Delivered"];
+type ProductStatusMapping = {
+  [key in "0" | "1" | "2" | "3" | "4"]: string;
+};
+
+export const productStatusMapping: ProductStatusMapping = {
+  "0": "Created",
+  "1": "Transitted",
+  "2": "Delivered",
+  "3": "Accepted",
+  "4": "Rejected",
+};
+
+export const productStatus = [
+  "All",
+  "Created",
+  "Transitted",
+  "Delivered",
+  "Accepted",
+  "Rejected",
+];
 
 export const userRoles = [
   "All",

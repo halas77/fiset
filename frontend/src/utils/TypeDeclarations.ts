@@ -4,7 +4,7 @@ export interface ItemType {
   owner: string;
   origin: string;
   remarks: string;
-  status: string;
+  status: string; 
   location: string;
   timestamp: string;
 }
