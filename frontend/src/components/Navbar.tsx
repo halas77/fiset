@@ -4,8 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { dashboardContent } from "../utils/constants";
 import { FiLogOut } from "react-icons/fi";
 import { useMainContext } from "../context/MainContext";
-import { addRole } from "../contract/manageUser";
-import { createItem, getItems } from "../contract/manageProduct";
 
 interface NavbarProps {
   className?: string;
@@ -57,7 +55,6 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
           </div>
         </div>
 
-        {/* logo for mobile view */}
         <Link
           to={"/"}
           className="flex lg:hidden justify-center items-center gap-2 py-4"

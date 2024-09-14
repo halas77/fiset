@@ -19,10 +19,10 @@ export const getItems = async () => {
 
   for (let i = 1; i <= itemCounter; i++) {
     const item = await contract.items(i);
-
     const formattedItem = {
       id: item.id.toString(),
       name: item.name,
+      owner: item.currentOwner,
       origin: item.origin,
       remarks: item.remarks,
       status: item.status,
@@ -31,8 +31,6 @@ export const getItems = async () => {
     };
     items.push(formattedItem);
   }
-
-  console.log('items', items)
 
   return items;
 };

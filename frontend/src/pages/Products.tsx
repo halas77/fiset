@@ -12,7 +12,6 @@ const Products = () => {
 
   return (
     <Layout>
-      {/* Header Section */}
       <header className="text-gray-900 py-2  sm:px-6 lg:px-8">
         <h1 className="text-2xl font-semibold tracking-wide">
           Manage products
@@ -36,11 +35,9 @@ const Products = () => {
         </button>
       </div>
 
-      {/* table */}
       <div className="max-w-[85rem] mx-auto  sm:px-6 lg:px-8">
         <ProductsTable activeTab={activeTab} />
       </div>
-      {/* Create product modal */}
       <div>
         {openModal && <CreateProductModal setOpenModal={setOpenModal} />}
       </div>
