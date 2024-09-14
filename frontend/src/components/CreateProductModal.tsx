@@ -1,10 +1,28 @@
+import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
+import { createItem } from "../contract/manageProduct";
 
 interface CreateProductModalProp {
   setOpenModal: (open: boolean) => void;
 }
 
 const CreateProductModal = ({ setOpenModal }: CreateProductModalProp) => {
+  const [name, setName] = useState("");
+  const [origin, setOrigin] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleCreateProduct = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      await createItem({ name, origin });
+      setLoading(false)
+      setOpenModal(false)
+    } catch (error) {
+      console.log("error", error);
+      setLoading(false);
+    }
+  };
   return (
     <div className="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center p-2">
       <div className="bg-white rounded-xl shadow-lg p-8 max-w-lg w-full">
@@ -27,7 +45,7 @@ const CreateProductModal = ({ setOpenModal }: CreateProductModalProp) => {
           </button>
         </div>
 
-        <form>
+        <form onSubmit={handleCreateProduct}>
           <div className="grid gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -35,6 +53,8 @@ const CreateProductModal = ({ setOpenModal }: CreateProductModalProp) => {
               </label>
               <input
                 type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 name="productName"
                 className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-gray-950 focus:ring-gray-950  placeholder-gray-400 transition duration-300  ease-in-out"
                 placeholder="e.g., Organic Coffee Beans"
@@ -52,6 +72,8 @@ const CreateProductModal = ({ setOpenModal }: CreateProductModalProp) => {
               <input
                 type="text"
                 name="origin"
+                value={origin}
+                onChange={(e) => setOrigin(e.target.value)}
                 className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-gray-950 focus:ring-gray-950  placeholder-gray-400 transition duration-300  ease-in-out"
                 placeholder="e.g. Keffa, Ethiopia"
                 required
@@ -63,9 +85,10 @@ const CreateProductModal = ({ setOpenModal }: CreateProductModalProp) => {
 
             <button
               type="submit"
-              className="w-full py-3 px-4 bg-gray-950 text-white text-sm rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+              disabled={loading}
+              className="w-full py-3 px-4 bg-gray-950 text-white text-sm rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700 disabled:bg-gray-500 disabled:cursor-not-allowed"
             >
-              Create Product
+              {loading ? "Creating..." : " Create Product"}
             </button>
           </div>
         </form>

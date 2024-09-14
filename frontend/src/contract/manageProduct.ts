@@ -1,20 +1,25 @@
 import { getContract } from ".";
-import { productStatusMapping } from "../utils/constants";
+import { handleStatus } from "../utils/libs";
 
-export const createItem = async () => {
+// create user
+interface CreateItemProps {
+  name: string;
+  origin: string;
+}
+export const createItem = async ({ name, origin }: CreateItemProps) => {
   const contract = await getContract();
 
   try {
-    const item = await contract.createItem("Gold", "Gambella, Ethiopia");
+    console.log("name", name);
+    console.log("origin", origin);
+    const item = await contract.createItem(name, origin);
     await item.wait();
   } catch (error) {
     console.log("error", error);
   }
 };
 
-const handleStatus = (i: keyof typeof productStatusMapping) => {
-  return productStatusMapping[i];
-};
+// get all items
 
 export const getItems = async () => {
   const contract = await getContract();
@@ -40,3 +45,5 @@ export const getItems = async () => {
 
   return items;
 };
+
+//  get item details

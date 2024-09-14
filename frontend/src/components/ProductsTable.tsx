@@ -31,7 +31,7 @@ const ProductsTable = ({ activeTab }: ProductTableProp) => {
 
   useEffect(() => {
     handleGetItems();
-  }, []);
+  }, [items]);
 
   return (
     <div className="flex flex-col">
@@ -43,13 +43,13 @@ const ProductsTable = ({ activeTab }: ProductTableProp) => {
                 <tr>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-start text-xs font-medium text-gray-800 uppercase "
+                    className="px-6 py-3 text-start text-xs font-medium text-gray-800 uppercase whitespace-nowrap"
                   >
                     Product name
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-start text-xs font-medium text-gray-800 uppercase "
+                    className="px-6 py-3 text-start text-xs font-medium text-gray-800 uppercase  whitespace-nowrap"
                   >
                     Current owner
                   </th>
