@@ -13,8 +13,8 @@ const ProductsTable = ({ activeTab }: ProductTableProp) => {
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState<ItemType[]>([]);
   const navigate = useNavigate();
-  const handleNavigation = () => {
-    navigate("/product/productId");
+  const handleNavigation = (item: ItemType) => {
+    navigate(`/product/${item.name}`, { state: { item } });
   };
 
   const handleGetItems = async () => {
@@ -34,7 +34,10 @@ const ProductsTable = ({ activeTab }: ProductTableProp) => {
     handleGetItems();
   }, []);
 
-  const filteredItems = activeTab === "All" ? items : items.filter(item => item.status === activeTab);
+  const filteredItems =
+    activeTab === "All"
+      ? items
+      : items.filter((item) => item.status === activeTab);
 
   return (
     <div className="flex flex-col">
@@ -88,7 +91,7 @@ const ProductsTable = ({ activeTab }: ProductTableProp) => {
                 ) : filteredItems.length === 0 ? (
                   <tr>
                     <td colSpan={6}>
-                      <NotFound /> 
+                      <NotFound />
                     </td>
                   </tr>
                 ) : (
@@ -96,7 +99,7 @@ const ProductsTable = ({ activeTab }: ProductTableProp) => {
                     <tr
                       key={item.id}
                       className="cursor-pointer hover:bg-gray-100"
-                      onClick={handleNavigation}
+                      onClick={() => handleNavigation(item)}
                     >
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 ">
                         {item.name}

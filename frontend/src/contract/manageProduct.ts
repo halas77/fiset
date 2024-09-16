@@ -6,6 +6,8 @@ interface CreateItemProps {
   name: string;
   origin: string;
 }
+
+
 export const createItem = async ({ name, origin }: CreateItemProps) => {
   const contract = await getContract();
 
