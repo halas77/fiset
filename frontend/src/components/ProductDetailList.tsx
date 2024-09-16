@@ -1,5 +1,4 @@
 import { FiUser } from "react-icons/fi";
-import { productDetailData } from "../utils/constants";
 import { MdRestartAlt } from "react-icons/md";
 import {
   HiOutlineClock,
