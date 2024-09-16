@@ -8,3 +8,9 @@ export interface ItemType {
   location: string;
   timestamp: string;
 }
+
+export interface AuditType {
+  remarks: string;
+  user: string;
+  timestamp: string;
+}

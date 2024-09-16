@@ -7,13 +7,11 @@ interface CreateItemProps {
   origin: string;
 }
 
-
+// Create item
 export const createItem = async ({ name, origin }: CreateItemProps) => {
   const contract = await getContract();
 
   try {
-    console.log("name", name);
-    console.log("origin", origin);
     const item = await contract.createItem(name, origin);
     await item.wait();
   } catch (error) {
@@ -48,4 +46,27 @@ export const getItems = async () => {
   return items;
 };
 
-//  get item details
+//  get audit trail for an item
+
+export const getAuditTrail = async (id: number) => {
+  const contract = await getContract();
+
+  try {
+    const audits = await contract.getAuditTrail(id);
+
+    const formattedAudits = []
+
+    for (let i = 0; i <= audits.length - 1; i++) {
+      const audit = audits[i]
+      const formattedAudit = {
+        user: audit.caller,
+        remarks: audit.remarks,
+        timestamp: new Date(audit.timestamp * 1000).toLocaleString(),
+      };
+      formattedAudits.push(formattedAudit);
+    }
+    return formattedAudits;
+  } catch (error) {
+    console.log("error", error);
+  }
+};
