@@ -1,7 +1,6 @@
 import { getContract } from ".";
 import { handleStatus } from "../utils/libs";
 
-// create user
 interface CreateItemProps {
   name: string;
   origin: string;
@@ -47,7 +46,6 @@ export const getItems = async () => {
 };
 
 //  get audit trail for an item
-
 export const getAuditTrail = async (id: number) => {
   const contract = await getContract();
 
@@ -70,3 +68,13 @@ export const getAuditTrail = async (id: number) => {
     console.log("error", error);
   }
 };
+
+// change item status
+export const changeStatus = async() => {
+  const contract = await getContract();
+
+  console.log('contract', contract)
+
+  return contract
+ 
+}

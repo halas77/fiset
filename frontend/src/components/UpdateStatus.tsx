@@ -1,11 +1,25 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { productStatus } from "../utils/constants";
+import { changeStatus } from "../contract/manageProduct";
+import { useState } from "react";
 
 interface UpdateStatusProps {
   setOpenModal: (open: boolean) => void;
 }
 
 const UpdateStatus = ({ setOpenModal }: UpdateStatusProps) => {
+  const [status, setStatus] = useState("");
+  const [remarks, setRemarks] = useState("");
+
+  const handleStatus = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      const status = await changeStatus();
+      console.log("status", status);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
     <div className="fixed top-0 left-0 z-50 w-full h-full bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center px-2">
       <div className="bg-white rounded-xl shadow-lg p-8 max-w-lg w-full">
@@ -28,13 +42,17 @@ const UpdateStatus = ({ setOpenModal }: UpdateStatusProps) => {
           </button>
         </div>
 
-        <form>
+        <form onSubmit={handleStatus}>
           <div className="grid gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Status
               </label>
-              <select className="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-gray-950 focus:ring-gray-950 disabled:opacity-50 disabled:pointer-events-none transition duration-300  ease-in-out">
+              <select
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+                className="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-gray-950 focus:ring-gray-950 disabled:opacity-50 disabled:pointer-events-none transition duration-300  ease-in-out"
+              >
                 <option value="" disabled selected>
                   Select status
                 </option>
@@ -56,6 +74,8 @@ const UpdateStatus = ({ setOpenModal }: UpdateStatusProps) => {
                 Remarks
               </label>
               <textarea
+                value={remarks}
+                onChange={(e) => setRemarks(e.target.value)}
                 name="origin"
                 rows={3}
                 className="py-3 px-4 block w-full border border-gray-300 rounded-lg text-sm focus:border-gray-950 focus:ring-gray-950  placeholder-gray-400 transition duration-300  ease-in-out"
