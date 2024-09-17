@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { producerChange } from "../contract/manageProduct";
-import { productStatus } from "../utils/constants";
 import { useLocation } from "react-router-dom";
 
 interface UpdateStatusProps {
