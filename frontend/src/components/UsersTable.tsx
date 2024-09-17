@@ -52,12 +52,6 @@ const UsersTable = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-start flex gap-2">
                       <button
                         type="button"
-                        className="inline-flex items-center gap-x-2 text-xs rounded-lg bg-green-200 px-2 py-0.5 border border-transparent text-green-700 hover:bg-green-300 focus:outline-none  disabled:opacity-50 disabled:pointer-events-none"
-                      >
-                        Grant access
-                      </button>
-                      <button
-                        type="button"
                         className="inline-flex items-center gap-x-2 text-xs rounded-lg bg-red-200 px-2 py-0.5 border border-transparent text-red-700 hover:bg-red-300 focus:outline-none  disabled:opacity-50 disabled:pointer-events-none"
                       >
                         Revoke access

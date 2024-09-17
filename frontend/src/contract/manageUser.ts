@@ -1,15 +1,14 @@
 import { ethers } from "ethers";
 import { getContract } from ".";
 
-export const addRole = async () => {
+interface addRoleProps {
+  account: string;
+  role: string;
+}
+
+export const addRole = async ({ account, role }: addRoleProps) => {
   const contract = await getContract();
-
-  // Parameters
-  const account = "";
-  const PRODUCER_ROLE = ethers.utils.keccak256(
-    ethers.utils.toUtf8Bytes("PRODUCER_ROLE")
-  );
-
-  const user = await contract.addRole(account, PRODUCER_ROLE);
+  const hashedRole = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(role));
+  const user = await contract.addRole(account, hashedRole);
   await user.wait();
 };

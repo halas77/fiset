@@ -103,11 +103,12 @@ export const productStatus = [
 
 export const userRoles = [
   "All",
-  "Admin",
-  "Producer",
-  "Supplier",
-  "Distributor",
-  "Inspector",
+  "PRODUCER_ROLE",
+  "SUPPLIER_ROLE",
+  "MANUFACTURER_ROLE",
+  "DISTRIBUTOR_ROLE",
+  "RETAILER_ROLE",
+  "INSPECTOR_ROLE",
 ];
 
 export const productDummyData = [
