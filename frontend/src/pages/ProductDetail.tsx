@@ -5,9 +5,11 @@ import ProductTimeline from "../components/ProductTimeline";
 import { RxUpdate } from "react-icons/rx";
 import UpdateStatus from "../components/UpdateStatus";
 import { useLocation } from "react-router-dom";
+import ProducerModal from "../components/ProducerModal";
 
 const ProductDetail = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [openProducerModal, setOpenProducerModal] = useState(false);
 
   const location = useLocation();
   const item = location.state.item;
@@ -22,23 +24,32 @@ const ProductDetail = () => {
             Here you can manage product name
           </p>
         </div>
-        <button
-          onClick={() => setOpenModal(true)}
-          className="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded border border-gray-200 bg-gray-950 text-white shadow-sm hover:bg-gray-800 focus:outline-none  disabled:pointer-events-none mb-2"
-        >
-          <RxUpdate size={18} />
-          Update status
-        </button>
+        {item.status === "Created" ? (
+          <button
+            onClick={() => setOpenProducerModal(true)}
+            className="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded border border-gray-200 bg-gray-950 text-white shadow-sm hover:bg-gray-800 focus:outline-none  disabled:pointer-events-none mb-2"
+          >
+            <RxUpdate size={18} />
+            Update status
+          </button>
+        ) : (
+          <button
+            onClick={() => setOpenModal(true)}
+            className="py-2 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded border border-gray-200 bg-gray-950 text-white shadow-sm hover:bg-gray-800 focus:outline-none  disabled:pointer-events-none mb-2"
+          >
+            <RxUpdate size={18} />
+            Update status
+          </button>
+        )}
       </header>
-      {/* open modal */}
       {openModal && <UpdateStatus setOpenModal={setOpenModal} />}
+      {openProducerModal && (
+        <ProducerModal setOpenProducerModal={setOpenProducerModal} />
+      )}
 
-      {/* Grid Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:px-6 lg:px-8">
-        {/* Product Attributes */}
         <ProductDetailList />
 
-        {/* Placeholder for future content */}
         <div className="block rounded-lg p-6 bg-white">
           <ProductTimeline />
         </div>

@@ -73,7 +73,27 @@ export const getAuditTrail = async (id: number) => {
 export const changeStatus = async () => {
   const contract = await getContract();
 
-  console.log("contract", contract);
-
   return contract;
+};
+
+interface producerChangeType {
+  itemId: number;
+  account: string;
+  address: string;
+}
+
+export const producerChange = async ({
+  itemId,
+  account,
+  address,
+}: producerChangeType) => {
+  const contract = await getContract();
+  console.log('contract', contract)
+  try {
+    const tx = await contract.transferOwnership(itemId, account, address);
+    await tx.wait();
+
+  } catch (error) {
+    console.log("error", error);
+  }
 };
