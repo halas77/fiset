@@ -22,6 +22,7 @@ const CreateUserModal = ({ setOpenModal }: CreateUserModalProp) => {
     } catch (error) {
       console.log("error", error);
       setLoading(false);
+      alert("Something went wrong!");
     }
   };
   return (

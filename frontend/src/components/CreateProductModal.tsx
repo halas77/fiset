@@ -22,6 +22,7 @@ const CreateProductModal = ({ setOpenModal }: CreateProductModalProp) => {
     } catch (error) {
       console.log("error", error);
       setLoading(false);
+      alert("Something went wrong!");
     }
   };
   return (

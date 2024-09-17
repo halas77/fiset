@@ -52,10 +52,10 @@ export const getAuditTrail = async (id: number) => {
   try {
     const audits = await contract.getAuditTrail(id);
 
-    const formattedAudits = []
+    const formattedAudits = [];
 
     for (let i = 0; i <= audits.length - 1; i++) {
-      const audit = audits[i]
+      const audit = audits[i];
       const formattedAudit = {
         user: audit.caller,
         remarks: audit.remarks,
@@ -70,11 +70,10 @@ export const getAuditTrail = async (id: number) => {
 };
 
 // change item status
-export const changeStatus = async() => {
+export const changeStatus = async () => {
   const contract = await getContract();
 
-  console.log('contract', contract)
+  console.log("contract", contract);
 
-  return contract
- 
-}
+  return contract;
+};

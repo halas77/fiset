@@ -111,6 +111,48 @@ export const userRoles = [
   "INSPECTOR_ROLE",
 ];
 
+import {
+  FiPackage,
+  FiTruck,
+  FiClipboard,
+  FiShoppingBag,
+  FiSearch,
+  FiTool,
+} from "react-icons/fi";
+
+export const roleData = [
+  {
+    label: "Producer",
+    desc: "A producer is responsible for creating or supplying goods or services. They play a key role in initiating the supply chain process by providing the raw materials or finished products.",
+    icon: FiPackage,
+  },
+  {
+    label: "Supplier",
+    desc: "A supplier provides raw materials or components needed for production. They ensure the availability of resources that producers require to create goods or services.",
+    icon: FiClipboard,
+  },
+  {
+    label: "Manufacturer",
+    desc: "A manufacturer transforms raw materials into finished goods. They are responsible for production, ensuring the quality and timely creation of products for further distribution.",
+    icon: FiTool,
+  },
+  {
+    label: "Distributor",
+    desc: "A distributor manages the transportation of goods from producers or manufacturers to retailers or end consumers. They oversee logistics and ensure efficient delivery.",
+    icon: FiTruck,
+  },
+  {
+    label: "Retailer",
+    desc: "A retailer sells products directly to consumers. They serve as the final point in the supply chain, offering goods to end-users for personal or commercial use.",
+    icon: FiShoppingBag,
+  },
+  {
+    label: "Inspector",
+    desc: "An inspector verifies the quality and safety of goods throughout the supply chain. They ensure compliance with regulations and standards to maintain product integrity.",
+    icon: FiSearch,
+  },
+];
+
 export const productDummyData = [
   {
     id: 1,

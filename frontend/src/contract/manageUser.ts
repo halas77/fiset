@@ -12,3 +12,10 @@ export const addRole = async ({ account, role }: addRoleProps) => {
   const user = await contract.addRole(account, hashedRole);
   await user.wait();
 };
+
+// get all users
+export const getUsers = async () => {
+  const contract = await getContract();
+
+  return contract
+};
