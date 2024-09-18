@@ -22,7 +22,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
 
   return (
     <div
-      className={`absolute lg:relative w-[14rem] h-screen shadow bg-gray-950 hidden lg:block ${className}`}
+      className={`absolute lg:relative w-[16rem] h-screen shadow bg-gray-950 hidden lg:block ${className}`}
     >
       <Link
         to={"/"}
@@ -35,7 +35,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
         {dashboardContent.map((item) => (
           <Link to={item.href} key={item.href}>
             <li
-              className={`pl-5 cursor-pointer text-sm leading-3 tracking-normal pb-4 pt-5 flex items-center text-indigo-50 hover:bg-gray-800 transition hover:border-l-2 ease-in-out duration-300 ${
+              className={`pl-5 cursor-pointer text-sm leading-3 tracking-normal pb-4 pt-5 flex items-center whitespace-nowrap text-indigo-50 hover:bg-gray-800 transition hover:border-l-2 ease-in-out duration-300 ${
                 location.pathname === item.href
                   ? "bg-gray-800 text-white border-l-2"
                   : ""
@@ -61,7 +61,9 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
 
       {/* Footer Section */}
       <div className="absolute bottom-6 left-0 w-full px-4 text-start text-white text-xs border-t border-white/20 pt-4 space-y-1">
-        <p className="whitespace-nowrap">&copy; {currentYear} Fisset. All rights reserved.</p>
+        <p className="whitespace-nowrap">
+          &copy; {currentYear} Fisset. All rights reserved.
+        </p>
         <p className="pl-3">Powered by Fisset.</p>
         <div className="flex justify-start pt-1 gap-6 pl-3">
           {socialLinks.map((item) => (
