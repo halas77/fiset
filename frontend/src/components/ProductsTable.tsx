@@ -9,6 +9,7 @@ interface ProductTableProp {
   activeTab: string;
 }
 
+
 const ProductsTable = ({ activeTab }: ProductTableProp) => {
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState<ItemType[]>([]);

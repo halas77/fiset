@@ -1,6 +1,7 @@
 import { FiGrid, FiUsers, FiSettings } from "react-icons/fi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { FiMail } from "react-icons/fi";
+import { FiCheckCircle } from "react-icons/fi";
 import { PiTelegramLogo } from "react-icons/pi";
 import { RiLinkedinBoxLine } from "react-icons/ri";
 import { RiGithubLine } from "react-icons/ri";
@@ -57,28 +58,37 @@ export const dashboardCardsData = [
   {
     title: "Created products",
     Icon: AiOutlineShoppingCart,
-    status: "97",
+    status: "Created",
     href: "/products",
   },
   {
     title: "Transitted products",
     Icon: GrTransaction,
-    status: "54",
+    status: "Transitted",
     href: "/products",
   },
   {
     title: "Delivered products",
     Icon: TbTruckDelivery,
-    status: "5",
+    status: "Delivered",
     href: "/products",
   },
   {
-    title: "Total users",
-    Icon: FiUsers,
-    status: "20",
+    title: "Accepted products",
+    Icon: FiCheckCircle,
+    status: "Accepted",
     href: "/users",
   },
 ];
+
+export type ItemNumberTypes = {
+  [key in
+    | "Created"
+    | "Transitted"
+    | "Delivered"
+    | "Accepted"
+    | "Rejected"]: number;
+};
 
 type ProductStatusMapping = {
   [key in "0" | "1" | "2" | "3" | "4"]: string;

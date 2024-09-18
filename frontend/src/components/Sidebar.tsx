@@ -22,7 +22,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
 
   return (
     <div
-      className={`absolute lg:relative w-[17rem] h-screen shadow bg-gray-950 hidden lg:block ${className}`}
+      className={`absolute lg:relative w-[14rem] h-screen shadow bg-gray-950 hidden lg:block ${className}`}
     >
       <Link
         to={"/"}
@@ -61,7 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
 
       {/* Footer Section */}
       <div className="absolute bottom-6 left-0 w-full px-4 text-start text-white text-xs border-t border-white/20 pt-4 space-y-1">
-        <p>&copy; {currentYear} Fisset. All rights reserved.</p>
+        <p className="whitespace-nowrap">&copy; {currentYear} Fisset. All rights reserved.</p>
         <p className="pl-3">Powered by Fisset.</p>
         <div className="flex justify-start pt-1 gap-6 pl-3">
           {socialLinks.map((item) => (
