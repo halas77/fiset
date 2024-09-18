@@ -1,6 +1,6 @@
 import { GoArrowUpRight } from "react-icons/go";
 import { LuUser } from "react-icons/lu";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getAuditTrail } from "../contract/manageProduct";
 import { useEffect, useState } from "react";
 import { AuditType } from "../utils/TypeDeclarations";
@@ -54,8 +54,11 @@ const ProductTimeline = () => {
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Reprehenderit, dolorum.
                 </p>
-                <button
+                <Link
+                  to={`https://sepolia.etherscan.io/address/${item?.user}`}
                   type="button"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="mt-1 -ms-1 p-1 inline-flex items-center gap-x-2 text-xs rounded-lg border border-transparent text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none "
                 >
                   <LuUser
@@ -64,7 +67,7 @@ const ProductTimeline = () => {
                   />
                   {item.user.slice(0, 20)}...
                   <GoArrowUpRight />
-                </button>
+                </Link>
               </div>
             </div>
           ))}

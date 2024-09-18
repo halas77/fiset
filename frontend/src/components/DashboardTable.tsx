@@ -13,6 +13,10 @@ const DashboardTable = ({ items, loading }: DashboardTableProps) => {
     navigate(`/product/${item.name}`, { state: { item } });
   };
 
+  const sortedItems = items.sort((a, b) => {
+    return new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
+  });
+
   return (
     <div className="flex flex-col">
       <div className="-m-1.5 overflow-x-auto w-[22rem] sm:w-[30rem] md:w-full ">
@@ -62,7 +66,7 @@ const DashboardTable = ({ items, loading }: DashboardTableProps) => {
               <tbody className="divide-y divide-gray-200 bg-gray-50">
                 {loading
                   ? [0, 1, 2, 3].map((i) => <SkeletonRow key={i} />)
-                  : items.map((item) => (
+                  : sortedItems.slice(0, 5).map((item) => (
                       <tr
                         key={item.id}
                         className="cursor-pointer hover:bg-gray-100"

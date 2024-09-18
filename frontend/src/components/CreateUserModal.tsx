@@ -79,7 +79,7 @@ const CreateUserModal = ({ setOpenModal }: CreateUserModalProp) => {
                 {userRoles
                   .filter((role) => role !== "All")
                   .map((role, idx) => (
-                    <option key={idx} value={role}>
+                    <option key={idx} value={role} className="tracking-widest">
                       {role.split("_")[0]}
                     </option>
                   ))}

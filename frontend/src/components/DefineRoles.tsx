@@ -7,7 +7,7 @@ const DefineRoles = () => {
         {roleData.map((item) => (
           <div
             key={item.label}
-            className="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition -900"
+            className="group flex flex-col bg-white/70 border shadow-sm rounded-xl hover:shadow-md focus:outline-none focus:shadow-md transition -900"
           >
             <div className="p-4 md:p-5">
               <div className="flex gap-x-5">
