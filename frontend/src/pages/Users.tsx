@@ -1,13 +1,10 @@
 import { MdAddCircleOutline } from "react-icons/md";
 import Layout from "../components/Layout";
 import { useState } from "react";
-import { userRoles } from "../utils/constants";
-import Tabs from "../components/Tabs";
 import CreateUserModal from "../components/CreateUserModal";
 import DefineRoles from "../components/DefineRoles";
 
 const Users = () => {
-  const [activeTab, setActiveTab] = useState("All");
   const [openModal, setOpenModal] = useState(false);
 
   return (
