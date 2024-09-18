@@ -2,6 +2,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { productStatus } from "../utils/constants";
 import { changeStatus } from "../contract/manageProduct";
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface UpdateStatusProps {
   setOpenModal: (open: boolean) => void;
@@ -10,14 +11,27 @@ interface UpdateStatusProps {
 const UpdateStatus = ({ setOpenModal }: UpdateStatusProps) => {
   const [status, setStatus] = useState("");
   const [remarks, setRemarks] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const location = useLocation();
+
+  const item = location.state.item;
+
+  const navigate = useNavigate();
 
   const handleStatus = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const status = await changeStatus();
-      console.log("status", status);
+      setLoading(true);
+      const itemId = item.id;
+      await changeStatus({ itemId, status, remarks });
+      setLoading(false);
+      setOpenModal(false);
+      navigate("/products");
     } catch (error) {
       console.log("error", error);
+      alert("Something went wrong!");
+      setLoading(false);
     }
   };
   return (
@@ -88,10 +102,11 @@ const UpdateStatus = ({ setOpenModal }: UpdateStatusProps) => {
             </div>
 
             <button
+              disabled={loading}
               type="submit"
-              className="w-full py-3 px-4 bg-gray-950 text-white text-sm rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+              className="w-full py-3 px-4 bg-gray-950 text-white text-sm rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700 disabled:bg-gray-500"
             >
-              Update status
+              {loading ? "Updating..." : " Update status"}
             </button>
           </div>
         </form>

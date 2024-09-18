@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { producerChange } from "../contract/manageProduct";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface UpdateStatusProps {
   setOpenProducerModal: (open: boolean) => void;
@@ -14,6 +14,7 @@ const ProducerModal = ({ setOpenProducerModal }: UpdateStatusProps) => {
 
   const location = useLocation();
   const item = location.state.item;
+  const navigate = useNavigate();
 
   const handleStatus = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,6 +24,8 @@ const ProducerModal = ({ setOpenProducerModal }: UpdateStatusProps) => {
       setLoading(true);
       await producerChange({ itemId, account, address });
       setLoading(false);
+      setOpenProducerModal(false);
+      navigate("/products");
     } catch (error) {
       console.log("error", error);
       setLoading(false);
@@ -92,7 +95,7 @@ const ProducerModal = ({ setOpenProducerModal }: UpdateStatusProps) => {
               disabled={loading}
               className="w-full py-3 px-4 bg-gray-950 text-white text-sm rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700 disabled:bg-gray-600"
             >
-              {loading ? "Updating ..." : " Update status"}
+              {loading ? "Updating..." : " Update status"}
             </button>
           </div>
         </form>

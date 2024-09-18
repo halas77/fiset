@@ -1,5 +1,5 @@
 import { getContract } from ".";
-import { handleStatus } from "../utils/libs";
+import { handleStatus, handleStatusKeys } from "../utils/libs";
 
 interface CreateItemProps {
   name: string;
@@ -69,11 +69,28 @@ export const getAuditTrail = async (id: number) => {
   }
 };
 
+interface changeStatusType {
+  itemId: number;
+  status: string;
+  remarks: string;
+}
+
 // change item status
-export const changeStatus = async () => {
+export const changeStatus = async ({
+  itemId,
+  status,
+  remarks,
+}: changeStatusType) => {
   const contract = await getContract();
 
-  return contract;
+  try {
+    console.log("contract", contract);
+    const formattedStatus = handleStatusKeys(status);
+    const tx = await contract.updateStatus(itemId, formattedStatus, remarks);
+    await tx.wait();
+  } catch (error) {
+    console.log("error", error);
+  }
 };
 
 interface producerChangeType {
@@ -88,11 +105,14 @@ export const producerChange = async ({
   address,
 }: producerChangeType) => {
   const contract = await getContract();
-  console.log('contract', contract)
   try {
-    const tx = await contract.transferOwnership(itemId, account, address);
+    // const tx = await contract.transferOwnership(itemId, account, address);
+    const tx = await contract["transferOwnership(uint256,address,string)"](
+      itemId,
+      account,
+      address
+    );
     await tx.wait();
-
   } catch (error) {
     console.log("error", error);
   }

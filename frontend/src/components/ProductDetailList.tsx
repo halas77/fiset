@@ -25,28 +25,31 @@ const ProductDetailList = () => {
       <div className="grid py-6 space-y-3 bg-white rounded-lg divide-y divide-gray-100 text-sm text-gray-800">
         {/* Name */}
         <div className="flex items-center gap-4 py-3">
-          <BsMinecart size={15} className="text-gray-950" />
+          <BsMinecart size={15} className="shrink-0 text-gray-950" />
           <p className="font-semibold text-gray-700">Product:</p>
           <p className="text-gray-700">{item.name}</p>
         </div>
 
         {/* Origin */}
         <div className="flex items-center gap-4 py-3">
-          <MdRestartAlt size={17} className="text-gray-950" />
+          <MdRestartAlt size={17} className="shrink-0 text-gray-950" />
           <p className="font-semibold text-gray-700">Origin:</p>
           <p className="text-gray-700">{item.origin}</p>
         </div>
 
         {/* Current Owner */}
         <div className="flex items-center gap-4 py-3">
-          <FiUser size={15} className="text-gray-950" />
+          <FiUser size={15} className="shrink-0 text-gray-950" />
           <p className="font-semibold text-gray-700">Current Owner:</p>
           <p className="text-gray-700">{item.owner.slice(0, 20)}...</p>
         </div>
 
         {/* Status */}
         <div className="flex items-center gap-4 py-3">
-          <HiOutlineInformationCircle size={15} className="text-gray-950" />
+          <HiOutlineInformationCircle
+            size={15}
+            className="shrink-0 text-gray-950"
+          />
           <p className="font-semibold text-gray-700">Status:</p>
           <p
             className={`inline-flex items-center gap-x-2 text-xs rounded-lg bg-indigo-200 px-2 py-0.5 border border-transparent  focus:outline-none  disabled:opacity-50 disabled:pointer-events-none uppercase ${
@@ -61,21 +64,24 @@ const ProductDetailList = () => {
 
         {/* Timestamp */}
         <div className="flex items-center gap-4 py-3">
-          <HiOutlineClock size={15} className="text-gray-950" />
+          <HiOutlineClock size={15} className="shrink-0 text-gray-950" />
           <p className="font-semibold text-gray-700">Timestamp:</p>
           <p className="text-gray-700">{item.timestamp}</p>
         </div>
 
         {/* Location */}
         <div className="flex items-center gap-4 py-3">
-          <HiOutlineLocationMarker size={15} className="text-gray-950" />
+          <HiOutlineLocationMarker
+            size={15}
+            className="shrink-0 text-gray-950"
+          />
           <p className="font-semibold text-gray-700">Location:</p>
           <p className="text-gray-700">{item.location}</p>
         </div>
 
         {/* Remarks */}
         <div className="flex items-center gap-4 py-3">
-          <FaRegCommentDots size={15} className="text-gray-950" />
+          <FaRegCommentDots size={15} className="shrink-0 text-gray-950" />
           <p className="font-semibold text-gray-700">Remarks:</p>
           <p className="text-gray-700">{item.remarks}</p>
         </div>
